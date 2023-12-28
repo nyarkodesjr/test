@@ -3,16 +3,16 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [comments, setComments] = useState([]);
+  const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/comments')
+    fetch('https://render-servicer-app.onrender.com/details')
       .then((response) => response.json())
-      .then((data) => setComments(data))
+      .then((data) => setStudents(data))
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  const commentItemStyle = {
+  const studentItemStyle = {
     marginBottom: '20px',
     border: '1px solid #ccc',
     padding: '10px',
@@ -25,13 +25,13 @@ function App() {
   };
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1>Comments</h1>
+      <h1>All-Students</h1>
       <ul style={{ listStyleType: 'none', padding: '0' }}>
-        {comments.map((comment) => (
-          <li key={comment.id} style={commentItemStyle}>
-            <strong style={strongStyle}>{comment.name}</strong>
-            <p>Email: {comment.email}</p>
-            <p>{comment.body}</p>
+        {students.map((student) => (
+          <li key={student.age} style={studentItemStyle}>
+            <strong style={strongStyle}>{student.name}</strong>
+            <p>Class Name: {student.className}</p>
+            <p>Age: {student.age}</p>
           </li>
         ))}
       </ul>
